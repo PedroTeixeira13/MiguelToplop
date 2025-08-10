@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material'
-import pbtoplop from './assets/p&btoplop.png'
+import pbtoplop from './assets/p_btoplop.svg'
 
 const Detail = () => {
   return (
@@ -11,7 +11,7 @@ const Detail = () => {
       justifyContent: 'center',
       alignItems: 'center',
     }}>
-      <img src={pbtoplop} />
+      <img style={{ height: '400px'}} src={pbtoplop} />
       <Box>
         <Box
           sx={{
