@@ -2,6 +2,9 @@ import { Box, Grid, Typography } from '@mui/material'
 import { intervalToDuration, type Duration } from 'date-fns'
 import { useEffect, useState } from 'react'
 import Clock from './Clock'
+import pirulito from './assets/pirulito.png'
+import dating from './assets/dating.png'
+import toploplev from './assets/toploplev.png'
 
 const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState<Duration | null>(null)
@@ -45,9 +48,9 @@ const Countdown = () => {
         alignItems: 'center',
       }}>
       <Grid size={{ xs: 12 }}>
-        <img style={{ height: '200px'}} src='../src/assets/toploplev.png' />
-        <img style={{ height: '200px'}} src='../src/assets/dating.png' />
-        <img style={{ height: '200px'}} src='../src/assets/pirulito.png' />
+        <img style={{ height: '200px'}} src={dating} />
+        <img style={{ height: '200px'}} src={toploplev} />
+        <img style={{ height: '200px'}} src={pirulito} />
       </Grid>
       <Clock timeLeft={timeLeft} />
     </Box>
