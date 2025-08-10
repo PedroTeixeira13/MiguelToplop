@@ -1,8 +1,9 @@
-import { Box, ButtonBase, Grid, Typography } from '@mui/material';
-import Title from './Title';
-import Detail from './Detail';
+import { Box, ButtonBase, Grid, IconButton } from '@mui/material';
 import { useState } from 'react';
 import Countdown from './Countdown';
+import Detail from './Detail';
+import Title from './Title';
+import { Menu } from '@mui/icons-material';
 
 function App() {
   const [isHiddenTitle, setIsHiddenTitle] = useState(false);
@@ -24,6 +25,7 @@ function App() {
           transition: 'transform 0.5s ease-in-out',
           transform: isHiddenTitle ? 'translateX(-100vw)' : 'translateX(0)',
           mr: 2,
+          zIndex: 1
         }}
         onClick={() => setIsHiddenTitle(true)}
       >
@@ -37,6 +39,18 @@ function App() {
         }}
       >
         <Title />
+      </Box>
+
+      <Box sx={{
+        position: 'absolute',
+        top: 15,
+        left: 15,
+        transition: 'opacity 0.5s ease-in-out',
+        opacity: isHiddenTitle ? 1 : 0,
+      }}>
+        <IconButton onClick={() => setIsHiddenTitle(false)}>
+          <Menu sx={{ color: '#b0b0b0' }} />
+        </IconButton>
       </Box>
 
       <Box

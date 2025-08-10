@@ -1,6 +1,7 @@
-import { Typography } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import { intervalToDuration, type Duration } from 'date-fns'
 import { useEffect, useState } from 'react'
+import Clock from './Clock'
 
 const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState<Duration | null>(null)
@@ -27,34 +28,29 @@ const Countdown = () => {
     return () => clearInterval(intervalId)
   }, [targetDate])
 
-  const formatCountdown = (duration: Duration) => {
-    const { months, days, hours, minutes, seconds } = duration
-
-    if (months === undefined || days === undefined || hours === undefined || minutes === undefined || seconds === undefined) {
-      return "Calculando..."
-    }
-
-    const formattedMonths = String(months).padStart(2, '0')
-    const formattedDays = String(days).padStart(2, '0')
-    const formattedHours = String(hours).padStart(2, '0')
-    const formattedMinutes = String(minutes).padStart(2, '0')
-    const formattedSeconds = String(seconds).padStart(2, '0')
-
-    return `${formattedMonths} meses, ${formattedDays} dias, ${formattedHours} horas, ${formattedMinutes} minutos, ${formattedSeconds} segundos`;
-  }
-
-  if (!timeLeft || (timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0 && !isCountingDown)) {
+  if (!timeLeft || (timeLeft.months === 0 && timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0 && !isCountingDown)) {
     return (
       <Typography variant='h2' color='white'>
-        JÁ PODE TROCAR :(((
+        JÁ PODE TROCAR O NICK :(((
       </Typography>
     )
   }
 
   return (
-    <Typography variant='h2' color='white'>
-      {formatCountdown(timeLeft)}
-    </Typography>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <Grid size={{ xs: 12 }}>
+        <img style={{ height: '200px'}} src='../src/assets/toploplev.png' />
+        <img style={{ height: '200px'}} src='../src/assets/dating.png' />
+        <img style={{ height: '200px'}} src='../src/assets/pirulito.png' />
+      </Grid>
+      <Clock timeLeft={timeLeft} />
+    </Box>
   )
 }
 
